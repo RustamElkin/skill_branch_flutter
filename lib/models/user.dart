@@ -74,19 +74,7 @@ class User with UserUtils {
   }
 
   String get name => "${"".capitalize(_firstName)} ${"".capitalize(_lastName)}";
-/*
-  @override
-  bool operator ==(Object object) {
-    if (object = null) {
-      return false;
-    }
-    if (object is User) {
-      return _firstName == object._firstName && _lastName == object._lastName;
-      /*&&
-          (phone == object.phone || email == object.email);*/
-    }
-  }
-*/
+
   void addFriend(Iterable<User> newFriend) {
     friends.addAll(newFriend);
   }
