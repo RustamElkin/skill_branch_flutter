@@ -8,33 +8,39 @@ class User with UserUtils {
 
   String _lastName;
   String _firstName;
-
   LoginType _type;
 
-  List<User> friends = [];
+  List<User> friends = <User>[];
 
   User._({String firstName, String lastName, String phone, String email})
       : _firstName = firstName,
         _lastName = lastName,
         this.phone = phone,
         this.email = email {
-    _type = email != null ? LoginType.email : LoginType.phone;
     print("User is created");
+    _type = email != null ? LoginType.email : LoginType.phone;
   }
+
+  // User.__(String name) {
+  //   this._lastName = name;
+  // }
 
   factory User({String name, String phone, String email}) {
     if (name.isEmpty) throw Exception("User name is empty");
 
     bool hasPhone = phone != null && phone.isNotEmpty;
     bool hasEmail = email != null && email.isNotEmpty;
+    // проверка телефона и email на не null, и не пустую строку,
+    // если оба true тогда возвращают истину
 
     if (!hasPhone && !hasEmail) throw Exception('phone or email is empty');
+    // если Phone или Email пустое, бросает Exception
 
     return User._(
         firstName: _getFirstname(name),
         lastName: _getLastname(name),
-        email: hasEmail ? checkEmail(email) : "",
-        phone: hasPhone ? checkPhone(phone) : "");
+        phone: hasPhone ? checkPhone(phone) : "",
+        email: hasEmail ? checkEmail(email) : "");
   }
 
   static String _getLastname(String userName) => userName.split(" ")[1];
@@ -44,12 +50,15 @@ class User with UserUtils {
     String pattern = r"^(?:[+0])?[0-9]{11}";
 
     if (phone == null || phone.isEmpty) {
-      throw Exception("Enter don't empty phone number");
+      throw Exception(
+          "Enter don't empty phone number"); // проверка на не пустой номер телефона
+
     } else {
       phone = phone.replaceAll(RegExp("[^+\\d]"), "");
+
       if (!RegExp(pattern).hasMatch(phone)) {
         throw Exception(
-            "Enter a valid phone number starting with a + and containing 11 digits");
+            "Enter a valid phone number starting with a + and containing 11 digits"); // проверка на то что начинается с +  содержит 11 цифр
       }
       return phone;
     }
@@ -62,9 +71,11 @@ class User with UserUtils {
     if (email == null || email.isEmpty) {
       throw Exception("Enter don't empty email");
     }
+
     if (!RegExp(pattern).hasMatch(email)) {
       throw Exception("Enter not correct email");
     }
+
     return email;
   }
 
@@ -74,6 +85,7 @@ class User with UserUtils {
   }
 
   String get name => "${"".capitalize(_firstName)} ${"".capitalize(_lastName)}";
+
 /*
   @override
   bool operator ==(Object object) {
@@ -81,12 +93,13 @@ class User with UserUtils {
       return false;
     }
     if (object is User) {
-      return _firstName == object._firstName && _lastName == object._lastName;
-      /*&&
-          (phone == object.phone || email == object.email);*/
+      return _firstName == object._firstName && 
+        _lastName == object._lastName &&
+        (phone == object.phone || email == object.email);
     }
   }
 */
+
   void addFriend(Iterable<User> newFriend) {
     friends.addAll(newFriend);
   }

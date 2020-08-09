@@ -1,3 +1,5 @@
+// import 'package:FlutterGalleryApp/string_util.dart';
+
 import 'models/user.dart';
 
 class UserHolder {
@@ -5,7 +7,9 @@ class UserHolder {
 
   void registerUser(String name, String phone, String email) {
     User user = User(name: name, phone: phone, email: email);
+
     print(user);
+
     if (!users.containsKey(user.login)) {
       users[user.login] = user;
     } else {
@@ -15,6 +19,7 @@ class UserHolder {
 
   User registerUserByEmail(String fullName, String email) {
     User user = User(name: fullName, email: email);
+
     if (!users.containsKey(user.login)) {
       users[user.login] = user;
     } else {
@@ -25,6 +30,7 @@ class UserHolder {
 
   User registerUserByPhone(String fullName, String phone) {
     User user = User(name: fullName, phone: phone);
+
     if (!users.containsKey(user.login)) {
       users[user.login] = user;
     } else {
