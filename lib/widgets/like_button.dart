@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:FlutterGalleryApp/res/res.dart';
 
 class LikeButton extends StatefulWidget {
-  LikeButton({this.likeCount = 0, this.isLiked = false});
-// ({Key key}) : super(key: key);
+  LikeButton(this.likeCount, this.isLiked, {Key key}) : super(key: key);
+
   final int likeCount;
   final bool isLiked;
 
@@ -15,13 +15,13 @@ class LikeButton extends StatefulWidget {
 
 class _LikeButtonState extends State<LikeButton> {
   bool isLiked;
-  // int likeCount;
+  int likeCount;
 
   @override
   void initState() {
     super.initState();
     isLiked = widget.isLiked;
-    // likeCount = widget.likeCount;
+    likeCount = widget.likeCount;
   }
 
   @override
@@ -31,11 +31,11 @@ class _LikeButtonState extends State<LikeButton> {
       onTap: () {
         setState(() {
           isLiked = !isLiked;
-          // if (isLiked) {
-          //   likeCount++;
-          // } else {
-          //   likeCount--;
-          // }
+          if (isLiked) {
+            likeCount++;
+          } else {
+            likeCount--;
+          }
         });
       },
       child: Center(
