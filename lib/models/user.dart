@@ -88,14 +88,13 @@ class User with UserUtils {
 
 /*
   @override
-  bool operator ==(Object object) {
-    if (object = null) {
+  bool operator == (Object object) {
+    if (object == null) {
       return false;
     }
     if (object is User) {
-      return _firstName == object._firstName && 
-        _lastName == object._lastName &&
-        (phone == object.phone || email == object.email);
+      return _firstName == object._firstName && _lastName == object._lastName 
+      && (phone == object.phone || email == object.email);
     }
   }
 */
