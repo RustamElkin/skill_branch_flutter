@@ -6,15 +6,16 @@ import '../lib/screens/photo_screen.dart';
 import '../lib/widgets/widgets.dart';
 
 void main() {
-  // testWidgets('LikeButton', (WidgetTester tester) async {
-  //   await tester.pumpWidget(MaterialApp(home: LikeButton(likeCount: 10, isLiked: true)));
+  testWidgets('LikeButton', (WidgetTester tester) async {
+    await tester.pumpWidget(
+        MaterialApp(home: LikeButton(likeCount: 10, isLiked: true)));
 
-  //   final titleFinder = find.text('10');
-  //   final messageFinder = find.byIcon(AppIcons.like_fill);
+    final titleFinder = find.text('10');
+    final messageFinder = find.byIcon(AppIcons.like_fill);
 
-  //   expect(titleFinder, findsOneWidget);
-  //   expect(messageFinder, findsOneWidget);
-  // });
+    expect(titleFinder, findsOneWidget);
+    expect(messageFinder, findsOneWidget);
+  });
 
   testWidgets('Photo', (WidgetTester tester) async {
     await tester.pumpWidget(
