@@ -25,6 +25,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
   String name;
   @override
   void initState() {
+    super.initState();
     altDescription = widget.altDescription != null ? widget.altDescription : "";
     photo = widget.photo != null
         ? widget.photo
