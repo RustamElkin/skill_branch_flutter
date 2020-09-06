@@ -1,4 +1,3 @@
-// import 'package:FlutterGalleryApp/res/app_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,9 +7,7 @@ import '../lib/widgets/widgets.dart';
 
 void main() {
   // testWidgets('LikeButton', (WidgetTester tester) async {
-  //   await tester.pumpWidget(
-  //       // MaterialApp(home: LikeButton(likeCount: 10, isLiked: true)));
-  //       MaterialApp(home: LikeButton(10, true)));
+  //   await tester.pumpWidget(MaterialApp(home: LikeButton(likeCount: 10, isLiked: true)));
 
   //   final titleFinder = find.text('10');
   //   final messageFinder = find.byIcon(AppIcons.like_fill);
