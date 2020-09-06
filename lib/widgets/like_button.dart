@@ -29,14 +29,16 @@ class _LikeButtonState extends State<LikeButton> {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        setState(() {
-          isLiked = !isLiked;
-          if (isLiked) {
-            likeCount++;
-          } else {
-            likeCount--;
-          }
-        });
+        setState(
+          () {
+            isLiked = !isLiked;
+            if (isLiked) {
+              likeCount++;
+            } else {
+              likeCount--;
+            }
+          },
+        );
       },
       child: Center(
         child: Padding(
