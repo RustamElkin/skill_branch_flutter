@@ -89,7 +89,7 @@ class _FeedState extends State<Feed> {
               ),
             ],
           ),
-          LikeButton(10, true)
+          LikeButton(10, true),
         ],
       ),
     );

@@ -23,6 +23,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
   String photo;
   String userName;
   String name;
+
   @override
   void initState() {
     super.initState();
@@ -48,9 +49,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Photo(
-            photoLink: photo,
-          ),
+          Photo(photoLink: photo),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Text(
@@ -88,15 +87,19 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                      width: 120,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: AppColors.dodgerBlue,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                          child: Text("Visit",
-                              style: AppStyles.h1Black
-                                  .copyWith(color: AppColors.white)))),
+                    width: 120,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: AppColors.dodgerBlue,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        "Visit",
+                        style:
+                            AppStyles.h1Black.copyWith(color: AppColors.white),
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -126,7 +129,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ],
