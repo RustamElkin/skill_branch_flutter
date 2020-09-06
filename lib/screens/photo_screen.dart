@@ -23,7 +23,6 @@ class _FullScreenImageState extends State<FullScreenImage> {
   String photo;
   String userName;
   String name;
-
   @override
   void initState() {
     super.initState();
@@ -72,15 +71,19 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 GestureDetector(
                   onTap: () {},
                   child: Container(
-                      width: 120,
-                      height: 40,
-                      decoration: BoxDecoration(
-                          color: AppColors.dodgerBlue,
-                          borderRadius: BorderRadius.circular(10)),
-                      child: Center(
-                          child: Text("Save",
-                              style: AppStyles.h1Black
-                                  .copyWith(color: AppColors.white)))),
+                    width: 120,
+                    height: 40,
+                    decoration: BoxDecoration(
+                        color: AppColors.dodgerBlue,
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Center(
+                      child: Text(
+                        "Save",
+                        style:
+                            AppStyles.h1Black.copyWith(color: AppColors.white),
+                      ),
+                    ),
+                  ),
                 ),
                 GestureDetector(
                   onTap: () {},
@@ -123,7 +126,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
                   ),
                 ],
-              ),
+              )
             ],
           ),
         ],
