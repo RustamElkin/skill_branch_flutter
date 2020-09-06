@@ -118,9 +118,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(name, style: AppStyles.h1Black),
-                  Text("@" + userName,
-                      style:
-                          AppStyles.h5Black.copyWith(color: AppColors.manatee)),
+                  Text(
+                    "@" + userName,
+                    style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
+                  ),
                 ],
               ),
             ],
