@@ -26,6 +26,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
 
   @override
   void initState() {
+    super.initState();
     altDescription = widget.altDescription != null ? widget.altDescription : "";
     photo = widget.photo != null
         ? widget.photo
@@ -67,9 +68,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 LikeButton(10, true),
-                SizedBox(
-                  width: 10,
-                ),
+                SizedBox(width: 10),
                 GestureDetector(
                   onTap: () {},
                   child: Container(
