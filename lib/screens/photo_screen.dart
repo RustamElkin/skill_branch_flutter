@@ -26,20 +26,20 @@ class _FullScreenImageState extends State<FullScreenImage> {
 
   @override
   void initState() {
+    super.initState();
     altDescription = widget.altDescription != null ? widget.altDescription : "";
     photo = widget.photo != null
         ? widget.photo
         : "https://flutter.dev/assets/404/dash_nest-c64796b59b65042a2b40fae5764c13b7477a592db79eaf04c86298dcb75b78ea.png";
     userName = widget.userName != null ? widget.userName : "";
     name = widget.name != null ? widget.name : "";
-    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        // elevation: 0,
         backgroundColor: AppColors.white,
         leading: IconButton(
             icon: Icon(CupertinoIcons.back, color: AppColors.grayChateau),
@@ -118,10 +118,13 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text(name.toString(), style: AppStyles.h1Black),
-                  Text('@$userName',
-                      style:
-                          AppStyles.h5Black.copyWith(color: AppColors.manatee)),
+                  // Text(name.toString(), style: AppStyles.h1Black),
+                  Text('Kirill Adeshchenko', style: AppStyles.h1Black),
+                  // Text('@$userName',
+                  Text(
+                    '@kaparray',
+                    style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
+                  ),
                 ],
               ),
             ],
