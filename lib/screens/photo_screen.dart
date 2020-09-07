@@ -25,13 +25,13 @@ class _FullScreenImageState extends State<FullScreenImage> {
   String name;
   @override
   void initState() {
-    super.initState();
     altDescription = widget.altDescription != null ? widget.altDescription : "";
     photo = widget.photo != null
         ? widget.photo
         : "https://flutter.dev/assets/404/dash_nest-c64796b59b65042a2b40fae5764c13b7477a592db79eaf04c86298dcb75b78ea.png";
     userName = widget.userName != null ? widget.userName : "";
     name = widget.name != null ? widget.name : "";
+    super.initState();
   }
 
   @override
