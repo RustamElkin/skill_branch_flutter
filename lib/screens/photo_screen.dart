@@ -23,6 +23,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
   String photo;
   String userName;
   String name;
+
   @override
   void initState() {
     altDescription = widget.altDescription != null ? widget.altDescription : "";
@@ -65,12 +66,12 @@ class _FullScreenImageState extends State<FullScreenImage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LikeButton(10, true),
+                LikeButton(1537, true),
                 SizedBox(
                   width: 10,
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => true,
                   child: Container(
                       width: 120,
                       height: 40,
@@ -83,7 +84,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                                   .copyWith(color: AppColors.white)))),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () => true,
                   child: Container(
                       width: 120,
                       height: 40,
@@ -105,28 +106,28 @@ class _FullScreenImageState extends State<FullScreenImage> {
 
   Widget _buildPhotoMeta() {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Row(
-              children: <Widget>[
-                UserAvatar(
-                    'https://skill-branch.ru/img/speakers/Adechenko.jpg'),
-                SizedBox(width: 6),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Text(name, style: AppStyles.h1Black),
-                    Text("@" + userName,
-                        style: AppStyles.h5Black
-                            .copyWith(color: AppColors.manatee))
-                  ],
-                )
-              ],
-            ),
-          ],
-        ));
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              UserAvatar('https://skill-branch.ru/img/speakers/Adechenko.jpg'),
+              SizedBox(width: 6),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(name.toString(), style: AppStyles.h1Black),
+                  Text('@$userName',
+                      style:
+                          AppStyles.h5Black.copyWith(color: AppColors.manatee)),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 }
