@@ -71,9 +71,30 @@ class _FullScreenImageState extends State<FullScreenImage> {
               children: <Widget>[
                 LikeButton(1537, true),
                 SizedBox(width: 10),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        width: 120,
+                        height: 40,
+                        alignment: Alignment.center,
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        margin: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                            shape: BoxShape.rectangle,
+                            color: AppColors.dodgerBlue,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(10))),
+                        child: Text('Save',
+                            style:
+                                AppStyles.h4.copyWith(color: AppColors.white))),
+                  ),
+                ),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
                       width: 120,
                       height: 40,
                       alignment: Alignment.center,
@@ -81,30 +102,15 @@ class _FullScreenImageState extends State<FullScreenImage> {
                           EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                       margin: EdgeInsets.all(12),
                       decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          color: AppColors.dodgerBlue,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text('Save',
-                          style:
-                              AppStyles.h4.copyWith(color: AppColors.white))),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: 120,
-                    height: 40,
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                    margin: EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      color: AppColors.dodgerBlue,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Visit',
-                        style: AppStyles.h4.copyWith(color: AppColors.white),
+                        shape: BoxShape.rectangle,
+                        color: AppColors.dodgerBlue,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Text(
+                          'Visit',
+                          style: AppStyles.h4.copyWith(color: AppColors.white),
+                        ),
                       ),
                     ),
                   ),
