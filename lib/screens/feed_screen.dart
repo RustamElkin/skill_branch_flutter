@@ -8,6 +8,7 @@ const String kFlutterDash =
 
 class Feed extends StatefulWidget {
   Feed({Key key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     return _FeedState();
@@ -19,7 +20,7 @@ class _FeedState extends State<Feed> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
-        itemCount: 8,
+        itemCount: 10,
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: <Widget>[
@@ -44,9 +45,8 @@ class _FeedState extends State<Feed> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => FullScreenImage(
-                          photo: kFlutterDash,
-                        )));
+                    builder: (context) =>
+                        FullScreenImage(photo: kFlutterDash)));
           },
           child: Photo(
             photoLink: kFlutterDash,
@@ -81,14 +81,15 @@ class _FeedState extends State<Feed> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text('Kirill Adeshchenko', style: AppStyles.h2Black),
-                  Text('@kaparray',
-                      style:
-                          AppStyles.h2Black.copyWith(color: AppColors.manatee))
+                  Text(
+                    '@kaparray',
+                    style: AppStyles.h2Black.copyWith(color: AppColors.manatee),
+                  ),
                 ],
               ),
             ],
           ),
-          LikeButton(2894, true)
+          LikeButton(2894, true),
         ],
       ),
     );
