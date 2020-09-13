@@ -104,8 +104,7 @@ class _FullScreenImageState extends State<FullScreenImage> {
                     child: Center(
                       child: Text(
                         'Visit',
-                        style:
-                            AppStyles.h1Black.copyWith(color: AppColors.white),
+                        style: AppStyles.h4.copyWith(color: AppColors.white),
                       ),
                     ),
                   ),
