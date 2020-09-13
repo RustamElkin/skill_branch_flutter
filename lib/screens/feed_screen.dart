@@ -26,7 +26,7 @@ class _FeedState extends State<Feed> {
             children: <Widget>[
               _buildItem(),
               Divider(
-                thickness: 2,
+                thickness: 1,
                 color: AppColors.mercury,
               )
             ],
@@ -54,12 +54,12 @@ class _FeedState extends State<Feed> {
         ),
         _buildPhotoMeta(),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+          padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
           child: Text(
             'This is Flutter Dash. I love him :)',
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
-            style: AppStyles.h3.copyWith(color: AppColors.black),
+            style: AppStyles.h3.copyWith(color: AppColors.manatee),
           ),
         ),
       ],
@@ -80,10 +80,10 @@ class _FeedState extends State<Feed> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Kirill Adeshchenko', style: AppStyles.h2Black),
+                  Text('Kirill Adeshchenko', style: AppStyles.h1Black),
                   Text(
                     '@kaparray',
-                    style: AppStyles.h2Black.copyWith(color: AppColors.manatee),
+                    style: AppStyles.h3.copyWith(color: AppColors.grayChateau),
                   ),
                 ],
               ),

@@ -29,8 +29,9 @@ class _FullScreenImageState extends State<FullScreenImage> {
   @override
   void initState() {
     super.initState();
-    altDescription =
-        (widget.altDescription != null) ? widget.altDescription : "";
+    altDescription = (widget.altDescription != null)
+        ? widget.altDescription
+        : "'This is Flutter Dash. I love him :)";
     photo = (widget.photo != null) ? widget.photo : kFlutterDash;
     userName = (widget.userName == null) ? 'kaparray' : widget.userName;
     name = (widget.name != null) ? widget.name : "Kirill Adeshchenko";
@@ -46,20 +47,24 @@ class _FullScreenImageState extends State<FullScreenImage> {
         leading: IconButton(
             icon: Icon(CupertinoIcons.back, color: AppColors.grayChateau),
             onPressed: () => Navigator.pop(context)),
-        title: Text("Photo", style: AppStyles.h2Black),
+        title: Text("Photo", style: AppStyles.h1Black),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Photo(photoLink: kFlutterDash),
-            Text(
-              altDescription,
-              maxLines: 3,
-              style: AppStyles.h3.copyWith(color: AppColors.grayChateau),
-              overflow: TextOverflow.ellipsis,
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 16, bottom: 14, left: 10, right: 10),
+              child: Text(
+                altDescription,
+                maxLines: 3,
+                style: AppStyles.h3.copyWith(color: AppColors.manatee),
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
             _buildPhotoMeta(name, userName),
             Row(
@@ -128,15 +133,15 @@ class _FullScreenImageState extends State<FullScreenImage> {
           Row(
             children: <Widget>[
               UserAvatar('https://skill-branch.ru/img/speakers/Adechenko.jpg'),
-              SizedBox(width: 6),
+              SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('$name', style: AppStyles.h2Black),
+                  Text('$name', style: AppStyles.h1Black),
                   Text(
                     '@$userName',
-                    style: AppStyles.h2Black.copyWith(color: AppColors.manatee),
+                    style: AppStyles.h3.copyWith(color: AppColors.grayChateau),
                   ),
                 ],
               ),
