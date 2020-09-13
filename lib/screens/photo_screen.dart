@@ -41,29 +41,26 @@ class _FullScreenImageState extends State<FullScreenImage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // elevation: 0,
+        elevation: 0,
         backgroundColor: AppColors.white,
         centerTitle: true,
         leading: IconButton(
             icon: Icon(CupertinoIcons.back, color: AppColors.grayChateau),
             onPressed: () => Navigator.pop(context)),
-        title: Text("Photo", style: AppStyles.h1Black),
+        title: Text("Photo", style: AppStyles.h2Black),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        padding: EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Photo(photoLink: kFlutterDash),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Text(
-                altDescription,
-                maxLines: 3,
-                style: AppStyles.h3.copyWith(color: AppColors.grayChateau),
-                overflow: TextOverflow.ellipsis,
-              ),
+            Text(
+              altDescription,
+              maxLines: 3,
+              style: AppStyles.h3.copyWith(color: AppColors.grayChateau),
+              overflow: TextOverflow.ellipsis,
             ),
             _buildPhotoMeta(name, userName),
             Row(
@@ -137,10 +134,10 @@ class _FullScreenImageState extends State<FullScreenImage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Text('Kirill Adeshchenko', style: AppStyles.h1Black),
+                  Text('$name', style: AppStyles.h2Black),
                   Text(
                     '@$userName',
-                    style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
+                    style: AppStyles.h2Black.copyWith(color: AppColors.manatee),
                   ),
                 ],
               ),
