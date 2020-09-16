@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:FlutterGalleryApp/res/res.dart';
-import 'package:FlutterGalleryApp/res/app_icons.dart';
+import '../res/res.dart';
+import '../res/app_icons.dart';
 
 class LikeButton extends StatefulWidget {
   LikeButton(this.likeCount, this.isLiked, {Key key}) : super(key: key);
@@ -50,6 +50,17 @@ class _LikeButtonState extends State<LikeButton> {
               Icon(isLiked ? AppIcons.like_fill : AppIcons.like),
               SizedBox(width: 4.21),
               Text("$likeCount"),
+              // Text(
+              //   widget.likeCount.toString(),
+              //   textAlign: TextAlign.center,
+              //   style: TextStyle(
+              //     color: Color(0xFF000000),
+              //     fontWeight: FontWeight.w500,
+              //     fontFamily: 'Roboto',
+              //     fontStyle: FontStyle.normal,
+              //     fontSize: 14,
+              //     height: 16 / 14,
+              //   ),
             ],
           ),
         ),

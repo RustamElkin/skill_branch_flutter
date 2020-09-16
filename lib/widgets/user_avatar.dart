@@ -12,9 +12,9 @@ class UserAvatar extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       child: CachedNetworkImage(
         imageUrl: avatarLink,
-        placeholder: (context, url) =>
-            Center(child: CircularProgressIndicator()),
-        errorWidget: (context, url, error) => Icon(Icons.error),
+        // placeholder: (context, url) =>
+        //     Center(child: CircularProgressIndicator()),
+        // errorWidget: (context, url, error) => Icon(Icons.error),
         width: 40,
         height: 40,
         fit: BoxFit.fill,

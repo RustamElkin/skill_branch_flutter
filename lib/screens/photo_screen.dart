@@ -1,6 +1,6 @@
-import 'package:FlutterGalleryApp/res/res.dart';
-import 'package:FlutterGalleryApp/screens/feed_screen.dart';
-import 'package:FlutterGalleryApp/widgets/widgets.dart';
+import '../res/res.dart';
+import '../screens/feed_screen.dart';
+import '../widgets/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

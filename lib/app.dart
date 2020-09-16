@@ -1,4 +1,4 @@
-import 'package:FlutterGalleryApp/screens/feed_screen.dart';
+import 'screens/feed_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
