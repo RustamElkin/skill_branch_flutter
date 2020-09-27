@@ -16,6 +16,8 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
+  String tag;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,9 +50,7 @@ class _FeedState extends State<Feed> {
                     builder: (context) =>
                         FullScreenImage(photo: kFlutterDash)));
           },
-          child: Photo(
-            photoLink: kFlutterDash,
-          ),
+          child: Photo(photoLink: kFlutterDash),
         ),
         _buildPhotoMeta(index),
         Padding(
