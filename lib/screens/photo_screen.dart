@@ -14,7 +14,6 @@ class FullScreenImage extends StatefulWidget {
       this.userPhoto,
       this.heroTag})
       : super(key: key);
-
   final String altDescription;
   final String photo;
   final String name;
@@ -23,9 +22,7 @@ class FullScreenImage extends StatefulWidget {
   final String heroTag;
 
   @override
-  State createState() {
-    return _FullScreenImageState();
-  }
+  State<StatefulWidget> createState() => _FullScreenImageState();
 }
 
 class _FullScreenImageState extends State<FullScreenImage>
@@ -41,31 +38,33 @@ class _FullScreenImageState extends State<FullScreenImage>
   @override
   void initState() {
     super.initState();
-    altDescription = (widget.altDescription != null)
-        ? altDescription
+    altDescription = widget.altDescription != null
+        ? ''
         : 'This is Flutter Dash. I love him :)';
-
-    name = (widget.name != null) ? widget.name : 'Kirill Adeshchenko';
+    photo = widget.photo != null ? widget.photo : kFlutterDash;
     userName = (widget.userName == null) ? 'kaparray' : widget.userName;
-    heroTag = 'tag';
-    photo = (widget.photo != null) ? widget.photo : kFlutterDash;
-    userPhoto = 'https://skill-branch.ru/img/speakers/Adechenko.jpg';
+    name = widget.name != null ? widget.name : 'Kirill Adeshchenko';
+    heroTag = widget.heroTag != null ? widget.heroTag : 'tag';
+    userPhoto = widget.userPhoto != null
+        ? widget.userPhoto
+        : 'https://skill-branch.ru/img/speakers/Adechenko.jpg';
     _controller = AnimationController(
-        duration: const Duration(milliseconds: 1500), vsync: this);
-    _playAnimation();
+        vsync: this, duration: const Duration(milliseconds: 1500));
+    _controller.forward();
+    // _playAnimation();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    // _controller.dispose();
     super.dispose();
   }
 
-  Future<void> _playAnimation() async {
-    try {
-      await _controller.forward().orCancel;
-    } on TickerCanceled {}
-  }
+  // Future<void> _playAnimation() async {
+  //   try {
+  //     await _controller.forward().orCancel;
+  //   } on TickerCanceled {}
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -73,123 +72,150 @@ class _FullScreenImageState extends State<FullScreenImage>
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColors.white,
-        title: Text("Photo", style: AppStyles.h1Black),
+        title: Text("Photo", style: AppStyles.h2Black),
         centerTitle: true,
         leading: IconButton(
             icon: Icon(CupertinoIcons.back, color: AppColors.grayChateau),
-            onPressed: () => Navigator.pop(context)),
+            onPressed: () => Navigator.pop(context, false)),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Hero(
-              tag: widget.heroTag,
-              child: Photo(photoLink: widget.photo ?? kFlutterDash),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Hero(
+            tag: heroTag,
+            child: Photo(photoLink: photo ?? kFlutterDash),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.only(top: 16, bottom: 14, left: 10, right: 10),
+            child: Text(
+              widget.altDescription,
+              maxLines: 3,
+              style: AppStyles.h3.copyWith(color: AppColors.manatee),
+              overflow: TextOverflow.ellipsis,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 16, bottom: 14, left: 10, right: 10),
-              child: Text(
-                widget.altDescription,
-                maxLines: 3,
-                style: AppStyles.h3.copyWith(color: AppColors.manatee),
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (BuildContext context, Widget child) {
-                return Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Row(
-                    children: <Widget>[
-                      Opacity(
-                        opacity: buildAnimationUserAvatar(),
-                        child: UserAvatar(
-                            'https://skill-branch.ru/img/speakers/Adechenko.jpg'),
-                      ),
-                      SizedBox(width: 6.0),
-                      Opacity(
-                        opacity: buildAnimationUserMeta(),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(widget.name, style: AppStyles.h1Black),
-                            Text(
-                              '@' + widget.userName,
-                              style: AppStyles.h5Black
-                                  .copyWith(color: AppColors.manatee),
-                            ),
-                          ],
+          ),
+          _buildPhotoMeta(),
+          AnimationPhotoMeta(
+            controller: _controller.view,
+            userName: userName,
+            name: name,
+            userPhoto: userPhoto,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 10, top: 17),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                LikeButton(2157, true),
+                SizedBox(width: 32.7),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        width: 105,
+                        height: 36,
+                        decoration: BoxDecoration(
+                            color: AppColors.dodgerBlue,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: Center(
+                            child: Text("Save",
+                                style: AppStyles.h4
+                                    .copyWith(color: AppColors.white)))),
+                  ),
+                ),
+                SizedBox(width: 12),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: 105,
+                      height: 36,
+                      decoration: BoxDecoration(
+                          color: AppColors.dodgerBlue,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Center(
+                        child: Text(
+                          "Visit",
+                          style: AppStyles.h4.copyWith(color: AppColors.white),
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                );
-              },
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  LikeButton(10, true),
-                  Row(
-                    children: <Widget>[
-                      _buildButton(txt: 'Save'),
-                      SizedBox(width: 10),
-                      _buildButton(txt: 'Visit'),
-                    ],
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
 
-  double buildAnimationUserMeta() {
-    return Tween<double>(begin: 0.0, end: 1.0)
-        .animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Interval(0.5, 1.0, curve: Curves.ease),
+  Widget _buildPhotoMeta() {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Row(
+            children: <Widget>[
+              UserAvatar('https://skill-branch.ru/img/speakers/Adechenko.jpg'),
+              SizedBox(width: 8),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(name, style: AppStyles.h1Black),
+                  Text(
+                    "@" + userName,
+                    style: AppStyles.h5Black.copyWith(color: AppColors.manatee),
+                  ),
+                ],
+              )
+            ],
           ),
-        )
-        .value;
-  }
-
-  double buildAnimationUserAvatar() {
-    return Tween<double>(begin: 0.0, end: 1.0)
-        .animate(
-          CurvedAnimation(
-            parent: _controller,
-            curve: Interval(0.0, 0.5, curve: Curves.ease),
-          ),
-        )
-        .value;
-  }
-
-  Widget _buildButton({String txt = 'Button'}) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.dodgerBlue,
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-          child: Text(txt, style: TextStyle(color: Colors.white, fontSize: 18)),
-        ),
+        ],
       ),
+    );
+  }
+}
+
+class AnimationPhotoMeta extends StatelessWidget {
+  AnimationPhotoMeta(
+      {Key key, this.controller, this.userName, this.name, this.userPhoto})
+      : opacityUserAvatar = Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                curve: Interval(0.0, 0.5, curve: Curves.ease),
+                parent: controller)),
+        opacityColumn = Tween<double>(begin: 0.0, end: 1.0).animate(
+            CurvedAnimation(
+                parent: controller,
+                curve: Interval(0.5, 1, curve: Curves.ease))),
+        super(key: key);
+
+  final Animation<double> controller;
+  final Animation<double> opacityUserAvatar;
+  final Animation<double> opacityColumn;
+  final String userName;
+  final String name;
+  final String userPhoto;
+
+  Widget _buildAnimation(BuildContext context, Widget child) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      builder: _buildAnimation,
+      animation: controller,
     );
   }
 }

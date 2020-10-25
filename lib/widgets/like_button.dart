@@ -44,23 +44,24 @@ class _LikeButtonState extends State<LikeButton> {
       },
       child: Center(
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.only(left: 34, right: 2.7),
           child: Row(
             children: <Widget>[
               Icon(isLiked ? AppIcons.like_fill : AppIcons.like),
-              SizedBox(width: 4.21),
-              Text("$likeCount"),
-              // Text(
-              //   widget.likeCount.toString(),
-              //   textAlign: TextAlign.center,
-              //   style: TextStyle(
-              //     color: Color(0xFF000000),
-              //     fontWeight: FontWeight.w500,
-              //     fontFamily: 'Roboto',
-              //     fontStyle: FontStyle.normal,
-              //     fontSize: 14,
-              //     height: 16 / 14,
-              //   ),
+              SizedBox(width: 4.6),
+              // Text("$likeCount"),
+              Text(
+                widget.likeCount.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFF000000),
+                  fontWeight: FontWeight.w500,
+                  fontFamily: 'Roboto',
+                  fontStyle: FontStyle.normal,
+                  fontSize: 16,
+                  height: 16 / 14,
+                ),
+              ),
             ],
           ),
         ),

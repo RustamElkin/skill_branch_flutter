@@ -16,8 +16,7 @@ class Feed extends StatefulWidget {
 }
 
 class _FeedState extends State<Feed> {
-  String tag;
-
+  // String tag;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,7 @@ class _FeedState extends State<Feed> {
         itemBuilder: (BuildContext context, int index) {
           return Column(
             children: <Widget>[
-              _buildItem(index),
+              _buildItem(index.toString()),
               Divider(
                 thickness: 1,
                 color: AppColors.mercury,
@@ -38,21 +37,35 @@ class _FeedState extends State<Feed> {
     );
   }
 
-  Widget _buildItem(int index) {
+  Widget _buildItem(String heroTag) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         GestureDetector(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        FullScreenImage(photo: kFlutterDash)));
+              context,
+              MaterialPageRoute(
+                builder: (context) => FullScreenImage(
+                  photo: kFlutterDash,
+                  heroTag: heroTag,
+                  userName: "kaparray",
+                  name: "Kirill Adeshchenko",
+                  userPhoto:
+                      'https://skill-branch.ru/img/speakers/Adechenko.jpg',
+                  altDescription: 'This is Flutter Dash. I love him :)',
+                ),
+              ),
+            );
           },
-          child: Photo(photoLink: kFlutterDash),
+          child: Hero(
+            tag: heroTag,
+            child: Photo(
+              photoLink: kFlutterDash,
+            ),
+          ),
         ),
-        _buildPhotoMeta(index),
+        _buildPhotoMeta(),
         Padding(
           padding: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
           child: Text(
@@ -66,9 +79,9 @@ class _FeedState extends State<Feed> {
     );
   }
 
-  Widget _buildPhotoMeta(int index) {
+  Widget _buildPhotoMeta() {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      padding: EdgeInsets.only(left: 10, right: 2.7, top: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
@@ -89,8 +102,7 @@ class _FeedState extends State<Feed> {
               ),
             ],
           ),
-          LikeButton(2894, true),
-          // LikeButton(likeCount: 2894, isLiked: true),
+          LikeButton(2157, true),
         ],
       ),
     );

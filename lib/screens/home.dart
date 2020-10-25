@@ -23,13 +23,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       bottomNavigationBar: BottomNavyBar(
         itemCornerRadius: 8,
+        currentTab: currentTab,
         curve: Curves.ease,
         onItemSelected: (int index) {
           setState(() {
             currentTab = index;
           });
         },
-        currentTab: currentTab,
         items: [
           BottomNavyBarItem(
               asset: AppIcons.home,
@@ -60,12 +60,12 @@ class BottomNavyBar extends StatelessWidget {
     this.showElevation = true,
     this.containerHeight = 56,
     this.mainAxisAlignment = MainAxisAlignment.spaceBetween,
-    @required this.items,
-    @required this.onItemSelected,
+    this.items,
+    this.onItemSelected,
     this.currentTab,
     this.animationDuration = const Duration(milliseconds: 270),
     this.itemCornerRadius = 24,
-    this.curve = Curves.linear,
+    this.curve = Curves.easeIn,
   }) : super(key: key);
 
   final Color backgroundColor;
@@ -87,30 +87,29 @@ class BottomNavyBar extends StatelessWidget {
           const BoxShadow(color: Colors.black12, blurRadius: 2),
       ]),
       child: SafeArea(
-          child: Container(
-        width: double.infinity,
-        height: containerHeight,
-        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-        child: Row(
-          mainAxisAlignment: mainAxisAlignment,
-          children: items.map((item) {
-            var index = items.indexOf(item);
-
-            return GestureDetector(
-              onTap: () {
-                onItemSelected(index);
-              },
-              child: _ItemWidget(
+        child: Container(
+          width: double.infinity,
+          height: containerHeight,
+          padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+          child: Row(
+            mainAxisAlignment: mainAxisAlignment,
+            children: items.map((item) {
+              var index = items.indexOf(item);
+              return GestureDetector(
+                onTap: () => onItemSelected(index),
+                child: _ItemWidget(
                   curve: curve,
                   animationDuration: animationDuration,
                   backgroundColor: backgroundColor,
                   isSelected: currentTab == index,
                   item: item,
-                  itemCornerRadius: itemCornerRadius),
-            );
-          }).toList(),
+                  itemCornerRadius: itemCornerRadius,
+                ),
+              );
+            }).toList(),
+          ),
         ),
-      )),
+      ),
     );
   }
 }
@@ -121,7 +120,7 @@ class _ItemWidget extends StatelessWidget {
       @required this.item,
       @required this.backgroundColor,
       @required this.animationDuration,
-      this.curve = Curves.linear,
+      this.curve = Curves.easeIn,
       @required this.itemCornerRadius})
       : assert(animationDuration != null, 'animationDuration is null'),
         assert(isSelected != null, 'isSelected is null'),
@@ -157,7 +156,9 @@ class _ItemWidget extends StatelessWidget {
           SizedBox(width: 4),
           Expanded(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 4,
+              ),
               child: DefaultTextStyle.merge(
                 child: item.title,
                 textAlign: item.textAlign,

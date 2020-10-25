@@ -12,9 +12,9 @@ class AppStyles {
   );
 
   static const h5Black = TextStyle(
-    fontSize: 13,
+    fontSize: 14,
     height: 18 / 13,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     color: AppColors.black,
     fontStyle: FontStyle.normal,
     fontFamily: 'Roboto',
@@ -24,7 +24,7 @@ class AppStyles {
     fontSize: 14,
     height: 16 / 14,
     color: AppColors.alto,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.w500,
     fontFamily: 'Roboto',
     fontStyle: FontStyle.normal,
     letterSpacing: 0.75,
@@ -34,7 +34,7 @@ class AppStyles {
     fontSize: 14,
     height: 20 / 14,
     color: AppColors.manatee,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w400,
     fontFamily: 'Roboto',
     fontStyle: FontStyle.normal,
     letterSpacing: 0.25,
@@ -45,16 +45,16 @@ class AppStyles {
     height: 22 / 17,
     fontFamily: 'Roboto',
     color: AppColors.black,
-    fontWeight: FontWeight.normal,
+    fontWeight: FontWeight.w500,
     fontStyle: FontStyle.normal,
     letterSpacing: -0.41,
   );
 
   static const h1Black = TextStyle(
     fontSize: 18,
-    height: 23 / 18,
+    height: 22 / 18,
     color: AppColors.black,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w700,
     fontFamily: 'Roboto',
     fontStyle: FontStyle.normal,
   );
